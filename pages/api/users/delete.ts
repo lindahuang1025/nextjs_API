@@ -16,8 +16,22 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *           type: integer
  *           format: int32
  *       responses:
- *         '200':
- *           description: user response  
+ *         200:
+ *           description: delete user
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 $ref: '#/definitions/User'
+ * definitions:
+ *   User:
+ *     type: object
+ *     properties:
+ *       ok: 
+ *         type: boolean  
+ *       message:
+ *         type: string  
+ *       data: 
+ *         type: number
  */
 export default async function handler(
   req: NextApiRequest, 
@@ -25,6 +39,6 @@ export default async function handler(
   ) {
     let id = Number(req.query.id || 0);
     await deleteUserById(id)
-    const response = { message: "post success!" };
+    const response = { ok: true, message: "success", data: id };
     res.status(200).json(response);
 }

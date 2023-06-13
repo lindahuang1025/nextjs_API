@@ -25,12 +25,31 @@ import { User } from "../../../server/entities/user-entity";
  *                   age:
  *                     type: number  
  *       responses:
- *         '200':
- *           description: user response
- *           schema:
- *             type: object
- *             items:
- *               type: string          
+ *         200:
+ *           description: A User object
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 $ref: '#/definitions/User'
+ * definitions:
+ *   User:
+ *     type: object
+ *     properties:
+ *       ok: 
+ *         type: boolean  
+ *       message:
+ *         type: string  
+ *       data: 
+ *         type: object
+ *         properties:
+ *           id:
+ *             type: number  
+ *           firstName:
+ *             type: string  
+ *           lastName:
+ *             type: string  
+ *           age:
+ *             type: number             
  */
 export default async function handler(
   req: NextApiRequest, 
@@ -43,6 +62,6 @@ export default async function handler(
     user.lastName = data.lastName;
     user.age = data.age;
     await updateUser(user)
-    const response = { message: "post success!"};
+    const response = { ok: true, message: "success", data: {user} };
     res.status(200).json(response);
 }

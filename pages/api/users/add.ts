@@ -34,14 +34,21 @@ import { User } from "../../../server/entities/user-entity";
  *   User:
  *     type: object
  *     properties:
- *       id:
- *         type: number  
- *       firstName:
+ *       ok: 
+ *         type: boolean  
+ *       message:
  *         type: string  
- *       lastName:
- *         type: string  
- *       age:
- *         type: number     
+ *       data: 
+ *         type: object
+ *         properties:
+ *           id:
+ *             type: number  
+ *           firstName:
+ *             type: string  
+ *           lastName:
+ *             type: string  
+ *           age:
+ *             type: number     
  */
 export default async function handler(
   req: NextApiRequest, 
@@ -53,6 +60,6 @@ export default async function handler(
     user.lastName = data.lastName;
     user.age = data.age;
     await addUser(user)
-    const response = { status: "ok", message: "success", data: {user} };
+    const response = { ok: true, message: "success", data: {user} };
     res.status(200).json(response);
 }
