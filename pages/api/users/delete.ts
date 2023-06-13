@@ -40,7 +40,7 @@ export default async function handler(
     let id = Number(req.query.id || 0);
     let currentUser = await getUserById(id);
     if(!currentUser){
-      const response = { ok: false, message: "Already existed this user", data: id };
+      const response = { ok: false, message: "Sorry, this user is not existed", data: id };
       res.status(200).json(response);
       return;
     }

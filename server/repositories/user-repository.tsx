@@ -29,7 +29,7 @@ const deleteUserById = async (id: number) => {
   .createQueryBuilder()
   .delete()
   .from(User)
-  .where("id = :id", { id: 1 })
+  .where("id = :id", { id: id })
   .execute()
 }
 
