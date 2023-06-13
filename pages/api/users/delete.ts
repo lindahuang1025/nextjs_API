@@ -7,6 +7,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  * paths:
  *   /api/users/delete:
  *     delete:
+ *       tags: [User]
  *       description: delete user by id 
  *       parameters: 
  *         - in: query

@@ -7,6 +7,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  * paths:
  *   /api/users/getAll:
  *     get:
+ *       tags: [User]
  *       description: get all users info
  *       responses:
  *         200:

@@ -8,6 +8,7 @@ import { User } from "../../../server/entities/user-entity";
  * paths:
  *   /api/users/add:
  *     put:
+ *       tags: [User]
  *       description: add the user info 
  *       parameters: 
  *         - in: query
