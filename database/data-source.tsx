@@ -1,8 +1,8 @@
 import "reflect-metadata"
-import { DataSource } from "typeorm"
-import { User } from "./entity/User"
+import { DataSource, DataSourceOptions } from "typeorm"
+import { User } from "./entities/user-entity"
 
-const dataSource = {
+const dataSource: DataSourceOptions = {
   type: "postgres",
   host: process.env.POSTGRES_HOST,
   port: 5432,
@@ -18,12 +18,17 @@ const dataSource = {
   migrations: [],
 }
 
-export const getAppDataSource = async () => {
-  const AppDataSource = new DataSource(dataSource)
+let AppDataSource: DataSource;
+export const getAppDataSource = async (): Promise<DataSource> => {
+  if(AppDataSource){
+    return AppDataSource;
+  }
+  AppDataSource = new DataSource(dataSource)
   try {
     await AppDataSource.initialize()
     return AppDataSource
   } catch (err) {
     console.error(err)
+    throw err;
   }
 }
