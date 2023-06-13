@@ -30,9 +30,9 @@ import { User } from "../../../server/entities/user-entity";
  *           content:
  *             application/json:
  *               schema:
- *                 $ref: '#/definitions/User'
+ *                 $ref: '#/definitions/UpdateUser'
  * definitions:
- *   User:
+ *   UpdateUser:
  *     type: object
  *     properties:
  *       ok: 

@@ -29,9 +29,9 @@ import { User } from "../../../server/entities/user-entity";
  *           content:
  *             application/json:
  *               schema:
- *                 $ref: '#/definitions/User'
+ *                 $ref: '#/definitions/AddUser'
  * definitions:
- *   User:
+ *   AddUser:
  *     type: object
  *     properties:
  *       ok: 

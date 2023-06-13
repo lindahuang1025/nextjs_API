@@ -33,9 +33,19 @@ const deleteUserById = async (id: number) => {
   .execute()
 }
 
+const getUserById = async (id: number) => {
+  const AppDataSource = await getAppDataSource()
+  return await AppDataSource
+    .getRepository(User)
+    .createQueryBuilder("user")
+    .where("user.id = :id", { id: id })
+    .getOne()
+}
+
 export {
   getAllUser,
   addUser,
   updateUser,
-  deleteUserById
+  deleteUserById,
+  getUserById
 }

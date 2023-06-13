@@ -1,5 +1,5 @@
 
-import { deleteUserById } from "../../../server/repositories/user-repository"
+import { deleteUserById, getUserById } from "../../../server/repositories/user-repository"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 /**
@@ -21,9 +21,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *           content:
  *             application/json:
  *               schema:
- *                 $ref: '#/definitions/User'
+ *                 $ref: '#/definitions/DeleteUser'
  * definitions:
- *   User:
+ *   DeleteUser:
  *     type: object
  *     properties:
  *       ok: 
@@ -38,6 +38,13 @@ export default async function handler(
   res: NextApiResponse
   ) {
     let id = Number(req.query.id || 0);
+    let currentUser = await getUserById(id);
+    if(!currentUser){
+      const response = { ok: false, message: "Already existed this user", data: id };
+      res.status(200).json(response);
+      return;
+    }
+
     await deleteUserById(id)
     const response = { ok: true, message: "success", data: id };
     res.status(200).json(response);

@@ -14,9 +14,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *           content:
  *             application/json:
  *               schema:
- *                 $ref: '#/definitions/User'
+ *                 $ref: '#/definitions/AllUser'
  * definitions:
- *   User:
+ *   AllUser:
  *     type: object
  *     properties:
  *       status: 
