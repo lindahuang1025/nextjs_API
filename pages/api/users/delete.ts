@@ -33,7 +33,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *       data: 
  *         type: number
  */
-export default async function handler(
+export default async function(
   req: NextApiRequest, 
   res: NextApiResponse
   ) {

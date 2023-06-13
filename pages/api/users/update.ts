@@ -51,7 +51,7 @@ import { User } from "../../../server/entities/user-entity";
  *           age:
  *             type: number             
  */
-export default async function handler(
+export default async function(
   req: NextApiRequest, 
   res: NextApiResponse
   ) {
