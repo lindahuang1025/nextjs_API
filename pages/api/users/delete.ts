@@ -17,19 +17,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *           format: int32
  *       responses:
  *         '200':
- *           description: user response
- *           schema:
- *             $ref: '#/definitions/User'
- * definitions:
- *   User:
- *     type: object
- *     properties:
- *       id:
- *         type: integer
- *         description: The user ID.
- *       username:
- *         type: string
- *         description: The user name.        
+ *           description: user response  
  */
 export default async function handler(
   req: NextApiRequest, 
